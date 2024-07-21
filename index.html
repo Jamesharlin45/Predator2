@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting Information</title>
+    <style>
+        body {
+            background-color: #282828;
+            color: #FFFFFF;
+            font-family: Arial, sans-serif;
+        }
+        .betting-card {
+            background-color: #333333;
+            border: 1px solid #444444;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        .betting-card h2 {
+            margin: 0;
+            font-size: 1.4em;
+            color: #FFD700;
+        }
+        .betting-card p {
+            margin: 5px 0;
+        }
+        .odds {
+            font-weight: bold;
+            color: #FFA500;
+        }
+        .status {
+            color: #00FF00;
+        }
+        .password-banner {
+            background-color: #444444;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 100px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: slideDown 1s forwards;
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        @keyframes slideDown {
+            to {
+                top: 100px;
+            }
+        }
+        @keyframes floatingWave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .password-banner h2 {
+            animation: floatingWave 2s infinite;
+            font-size: 1.5em;
+            color: #FFD700;
+        }
+        .password-banner input {
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            font-size: 1em;
+        }
+        .password-banner button {
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 50%;
+            font-size: 1em;
+            background-color: #FFD700;
+            color: #333333;
+            cursor: pointer;
+        }
+        .subscribe-message {
+            display: none;
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 100px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .subscribe-message h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .subscribe-message p {
+            margin: 10px 0;
+        }
+        .subscribe-message button {
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 50%;
+            font-size: 1em;
+            background-color: #FFD700;
+            color: #333333;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-banner" id="passwordBanner">
+        <div class="password-input">
+            <h2>Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+        <div class="subscribe-message" id="subscribeMessage">
+            <h2>Subscribe Now</h2>
+            <p>Join our community and start winning bets today!</p>
+            <p>Get expert betting tips and predictions.</p>
+            <button onclick="retryPassword()">Retry</button>
+        </div>
+    </div>
+
+    <div class="betting-card" id="bettingCard1">
+        <h2>Spain vs Germany</h2>
+        <p class="odds">Odds: 1.71</p>
+        <p>Date: 2024-07-05 17:00</p>
+        <p>Both sides Goal: Yes</p>
+        <p class="status">Status: Waiting</p>
+    </div>
+    
+    <div class="betting-card" id="bettingCard2">
+        <h2>Portugal vs France</h2>
+        <p class="odds">Odds: 3.00</p>
+        <p>Date: 2024-07-05 20:00</p>
+        <p>Full Time Result: Draw</p>
+        <p class="status">Status: Waiting</p>
+    </div>
+    
+    <div class="betting-card" id="bettingCard3">
+        <h2>Spain vs Germany</h2>
+        <p class="odds">Odds: 2.65</p>
+        <p>Date: 2024-07-05 17:00</p>
+        <p>Spain Win</p>
+        <p class="status">Status: Waiting</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === '6600') {
+                document.getElementById('passwordBanner').style.display = 'none';
+                document.getElementById('bettingCard1').style.display = 'block';
+                document.getElementById('bettingCard2').style.display = 'block';
+                document.getElementById('bettingCard3').style.display = 'block';
+            } else {
+                document.querySelector('.password-input').style.display = 'none';
+                document.getElementById('subscribeMessage').style.display = 'block';
+            }
+        }
+
+        function retryPassword() {
+            document.getElementById('subscribeMessage').style.display = 'none';
+            document.querySelector('.password-input').style.display = 'block';
+            document.getElementById('passwordInput').value = '';
+        }
+
+        window.onload = function() {
+            document.getElementById('passwordBanner').style.animation = 'slideDown 1s forwards';
+        }
+    </script>
+</body>
+</html>
